@@ -1,0 +1,432 @@
+/**
+ * Modern, attractive styling for the homepage
+ */
+
+/* Hero Section */
+.heroBanner {
+  padding: 6rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #fff5f7 0%, #f8bbd0 100%); /* Light pink gradient */
+}
+
+[data-theme='dark'] .heroBanner {
+  background: linear-gradient(135deg, #4a0025 0%, #880e4f 100%); /* Dark pink gradient */
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero__title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: #ec4899; /* Pink in light mode */
+}
+
+[data-theme='dark'] .hero__title {
+  color: #f8bbd0; /* Lighter pink in dark mode */
+}
+
+.hero__subtitle {
+  font-size: 1.5rem;
+  color: #f06292; /* Pink color */
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+[data-theme='dark'] .hero__subtitle {
+  color: #fde0e6; /* Lighter pink in dark mode */
+}
+
+.buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.button--primary {
+  background: linear-gradient(135deg, #f48fb1 0%, #f06292 100%); /* Light pink gradient */
+  border: none;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(244, 143, 177, 0.3); /* Pink shadow */
+}
+
+.button--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(244, 143, 177, 0.4); /* Pink shadow */
+  text-decoration: none;
+}
+
+.button--secondary {
+  background: transparent;
+  border: 2px solid #f48fb1; /* Pink border */
+  color: #f48fb1; /* Pink text */
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+[data-theme='dark'] .button--secondary {
+  border: 2px solid #f8bbd0; /* Lighter pink for dark mode */
+  color: #f8bbd0; /* Lighter pink for dark mode */
+}
+
+.button--secondary:hover {
+  background: #f48fb1; /* Pink background */
+  color: white;
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+[data-theme='dark'] .button--secondary:hover {
+  background: #f8bbd0; /* Lighter pink for dark mode */
+}
+
+/* Animated Background Elements */
+.heroBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.backgroundElement {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(244, 143, 177, 0.1) 0%, rgba(240, 98, 146, 0.05) 100%);
+  animation: float 6s ease-in-out infinite;
+}
+
+.element1 {
+  width: 200px;
+  height: 200px;
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.element2 {
+  width: 150px;
+  height: 150px;
+  top: 60%;
+  right: 15%;
+  animation-delay: 2s;
+}
+
+.element3 {
+  width: 100px;
+  height: 100px;
+  bottom: 20%;
+  left: 20%;
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+}
+
+/* Chapters Section */
+.chaptersSection {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #fff5f7 0%, #fde0e6 100%); /* Light pink gradient */
+}
+
+[data-theme='dark'] .chaptersSection {
+  background: linear-gradient(135deg, #2a0016 0%, #4a0025 100%); /* Dark pink gradient */
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #c2185b; /* Dark pink */
+  margin-bottom: 1rem;
+}
+
+[data-theme='dark'] .sectionTitle {
+  color: #f8bbd0; /* Light pink in dark mode */
+}
+
+.sectionSubtitle {
+  font-size: 1.25rem;
+  color: #f06292; /* Pink color */
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+[data-theme='dark'] .sectionSubtitle {
+  color: #fde0e6; /* Lighter pink in dark mode */
+}
+
+/* Chapters Grid */
+.chaptersGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.chapterCard {
+  display: block;
+  text-decoration: none;
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  height: 100%;
+}
+
+[data-theme='dark'] .chapterCard {
+  background: #1e293b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chapterCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -6px rgba(0, 0, 0, 0.05);
+  text-decoration: none;
+}
+
+.chapterCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ec4899 0%, #d946ef 100%);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.chapterCard--pink::before {
+  background: linear-gradient(90deg, #f48fb1 0%, #f06292 100%); /* Light pink gradient */
+}
+
+[data-theme='dark'] .chapterCard--pink {
+  background: #4a0025; /* Dark pink background */
+  border: 1px solid rgba(248, 187, 208, 0.2);
+}
+
+.chapterCard--pink .chapterId {
+  color: #f48fb1; /* Pink color */
+  background: rgba(244, 143, 177, 0.1); /* Light pink background */
+}
+
+.chapterCard--pink .readMore {
+  color: #f48fb1; /* Pink color */
+}
+
+[data-theme='dark'] .chapterCard--pink .readMore {
+  color: #f8bbd0; /* Lighter pink for dark mode */
+}
+
+.chapterCard:hover::before {
+  transform: scaleX(1);
+}
+
+.chapterIcon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.chapterTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+[data-theme='dark'] .chapterTitle {
+  color: #f8fafc;
+}
+
+.chapterDescription {
+  font-size: 1.1rem;
+  color: #c2185b; /* Dark pink */
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+[data-theme='dark'] .chapterDescription {
+  color: #f8bbd0; /* Lighter pink in dark mode */
+}
+
+.chapterMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #f8bbd0; /* Light pink border */
+  padding-top: 1.5rem;
+  margin-top: auto;
+}
+
+[data-theme='dark'] .chapterMeta {
+  border-top: 1px solid #c2185b; /* Dark pink border in dark mode */
+}
+
+.chapterId {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #f48fb1; /* Pink color */
+  background: rgba(244, 143, 177, 0.1); /* Light pink background */
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+}
+
+.readMore {
+  font-weight: 600;
+  color: #f48fb1; /* Pink color */
+  transition: transform 0.2s ease;
+}
+
+[data-theme='dark'] .readMore {
+  color: #f8bbd0; /* Lighter pink in dark mode */
+}
+
+.chapterCard:hover .readMore {
+  transform: translateX(4px);
+}
+
+/* Chatbot Section */
+.chatbotSection {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #fff5f7 0%, #fde0e6 100%); /* Light pink gradient */
+}
+
+[data-theme='dark'] .chatbotSection {
+  background: linear-gradient(135deg, #2a0016 0%, #4a0025 100%); /* Dark pink gradient */
+}
+
+.chatbotContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .heroBanner {
+    padding: 4rem 1rem;
+    min-height: auto;
+  }
+
+  .hero__title {
+    font-size: 2.5rem;
+  }
+
+  .hero__subtitle {
+    font-size: 1.25rem;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .sectionTitle {
+    font-size: 2rem;
+  }
+
+  .chaptersGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .chapterCard {
+    padding: 1.5rem;
+  }
+
+  .chapterTitle {
+    font-size: 1.25rem;
+  }
+
+  .chatbotSection {
+    padding: 4rem 1rem;
+  }
+
+  .chatbotContainer {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__title {
+    font-size: 2rem;
+  }
+
+  .hero__subtitle {
+    font-size: 1rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.75rem;
+  }
+}
+
+/* Smooth animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+/* Loading states */
+.chapterCard:global(.loading) {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Focus states for accessibility */
+.chapterCard:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.button:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}

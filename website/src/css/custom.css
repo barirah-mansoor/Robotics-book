@@ -1,0 +1,937 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* Enhanced color scheme with modern gradients and pink colors */
+:root {
+  --ifm-color-primary: #f48fb1; /* Light pink */
+  --ifm-color-primary-dark: #f06292; /* Slightly darker pink */
+  --ifm-color-primary-darker: #ec4899; /* Medium pink */
+  --ifm-color-primary-darkest: #d81b60; /* Deeper pink */
+  --ifm-color-primary-light: #f8bbd0; /* Lighter pink */
+  --ifm-color-primary-lighter: #fde0e6; /* Very light pink */
+  --ifm-color-primary-lightest: #ffebee; /* Lightest pink */
+  --ifm-color-secondary: #fdf0f6; /* Very light pink background */
+  --ifm-color-success: #81c784; /* Light green */
+  --ifm-color-info: #81d4fa; /* Light blue */
+  --ifm-color-warning: #ffb74d; /* Light orange */
+  --ifm-color-danger: #e57373; /* Light red */
+  --ifm-color-gray: #b0bec5; /* Light gray */
+
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(244, 143, 177, 0.1); /* Light pink highlight */
+
+  /* Modern card styling */
+  --ifm-card-background-color: #ffffff;
+  --ifm-card-border-radius: 16px;
+  --ifm-card-shadow: 0 10px 25px -5px rgba(244, 143, 177, 0.1), 0 8px 10px -6px rgba(244, 143, 177, 0.05); /* Light pink shadow */
+
+  /* Modern gradients */
+  --ifm-gradient-primary: linear-gradient(135deg, #f48fb1 0%, #f06292 100%); /* Light pink gradient */
+  --ifm-gradient-secondary: linear-gradient(135deg, #fdf0f6 0%, #fae6ee 100%); /* Light pink gradient */
+  --ifm-gradient-accent: linear-gradient(135deg, #81c784 0%, #4caf50 100%); /* Light green gradient */
+  --ifm-gradient-warning: linear-gradient(135deg, #ffb74d 0%, #ffa726 100%); /* Light orange gradient */
+  --ifm-gradient-purple: linear-gradient(135deg, #ce93d8 0%, #ba68c8 100%); /* Light purple gradient */
+  --ifm-gradient-pink: linear-gradient(135deg, #f8bbd0 0%, #f48fb1 100%); /* Light pink gradient */
+
+  /* Modern spacing */
+  --ifm-spacing-vertical: 2.5rem;
+  --ifm-spacing-horizontal: 2.5rem;
+
+  /* Modern typography */
+  --ifm-font-family-base: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+  --ifm-h1-font-size: 3rem;
+  --ifm-h2-font-size: 2.25rem;
+  --ifm-h3-font-size: 1.5rem;
+  --ifm-h4-font-size: 1.25rem;
+}
+
+/* Dark mode enhancements with pink theme */
+[data-theme='dark'] {
+  --ifm-color-primary: #f8bbd0; /* Light pink in dark mode */
+  --ifm-color-primary-dark: #f48fb1;
+  --ifm-color-primary-darker: #f06292;
+  --ifm-color-primary-darkest: #ec4899;
+  --ifm-color-primary-light: #fde0e6;
+  --ifm-color-primary-lighter: #ffebee;
+  --ifm-color-primary-lightest: #fff5f7;
+  --ifm-color-secondary: #2a0016; /* Dark pink background */
+  --ifm-color-success: #a5d6a7; /* Lighter green */
+  --ifm-color-info: #81d4fa; /* Lighter blue */
+  --ifm-color-warning: #ffcc80; /* Lighter orange */
+  --ifm-color-danger: #ef9a9a; /* Lighter red */
+  --ifm-color-gray: #eceff1; /* Lighter gray */
+
+  --ifm-card-background-color: #4a0025; /* Dark pink card background */
+  --ifm-card-shadow: 0 10px 25px -5px rgba(244, 143, 177, 0.3), 0 8px 10px -6px rgba(244, 143, 177, 0.2); /* Light pink shadow in dark mode */
+
+  --docusaurus-highlighted-code-line-bg: rgba(244, 143, 177, 0.3); /* Light pink highlight in dark mode */
+}
+
+/* Modern typography with better hierarchy */
+.docusaurus-highlight-code-line {
+  background-color: rgba(0, 0, 0, 0.1);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+}
+
+/* Enhanced card styling for feature cards */
+.feature-card {
+  background: var(--ifm-card-background-color);
+  border-radius: var(--ifm-card-border-radius);
+  box-shadow: var(--ifm-card-shadow);
+  padding: 2rem;
+  margin: 1.5rem 0;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme='dark'] .feature-card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--ifm-gradient-primary);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover::before {
+  transform: scaleX(1);
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -6px rgba(0, 0, 0, 0.05);
+}
+
+.feature-card h4 {
+  color: var(--ifm-color-primary);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Enhanced button styling */
+.button {
+  border-radius: 12px;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  text-decoration: none !important;
+}
+
+.button--primary {
+  background: var(--ifm-gradient-primary);
+  border: none;
+}
+
+/* Enhanced navbar with pink theme */
+.navbar {
+  box-shadow: 0 4px 6px -1px rgba(244, 143, 177, 0.1);
+  background: linear-gradient(90deg, #f48fb1 0%, #f8bbd0 100%); /* Light pink gradient */
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(244, 143, 177, 0.2);
+}
+
+[data-theme='dark'] .navbar {
+  background: linear-gradient(90deg, #880e4f 0%, #ad1457 100%); /* Dark pink gradient */
+  border-bottom: 1px solid rgba(248, 187, 208, 0.3);
+}
+
+.navbar__title {
+  font-weight: 700;
+  background: linear-gradient(90deg, #ffffff 0%, #fde0e6 100%); /* White to light pink */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.navbar__brand {
+  color: white !important;
+}
+
+.navbar__link {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.navbar__link:hover {
+  color: white !important;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+/* Pink-themed menu items */
+.menu__link {
+  color: #880e4f !important;
+}
+
+[data-theme='dark'] .menu__link {
+  color: #f8bbd0 !important;
+}
+
+.menu__link:hover {
+  background-color: rgba(244, 143, 177, 0.1) !important;
+}
+
+/* Pink-themed sidebar */
+.sidebar {
+  background: linear-gradient(to bottom, #fde0e6 0%, #fdf0f6 100%) !important;
+}
+
+[data-theme='dark'] .sidebar {
+  background: linear-gradient(to bottom, #4a0025 0%, #2a0016 100%) !important;
+}
+
+/* Pink-themed main content */
+.main-wrapper {
+  background: linear-gradient(135deg, #fff5f7 0%, #fdf0f6 100%);
+}
+
+[data-theme='dark'] .main-wrapper {
+  background: linear-gradient(135deg, #1a000d 0%, #0f0008 100%);
+}
+
+/* Pink-themed headings */
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4 {
+  color: #c2185b !important; /* Dark pink */
+}
+
+[data-theme='dark'] .markdown h1,
+[data-theme='dark'] .markdown h2,
+[data-theme='dark'] .markdown h3,
+[data-theme='dark'] .markdown h4 {
+  color: #f8bbd0 !important; /* Light pink */
+}
+
+/* Pink-themed links */
+.markdown a {
+  color: #e91e63 !important; /* Pink */
+}
+
+[data-theme='dark'] .markdown a {
+  color: #f48fb1 !important; /* Light pink */
+}
+
+/* Pink-themed buttons */
+.button--primary {
+  background: linear-gradient(135deg, #f48fb1 0%, #ec4899 100%) !important;
+  border: none !important;
+}
+
+.button--secondary {
+  background: transparent !important;
+  border: 2px solid #f48fb1 !important;
+  color: #c2185b !important;
+}
+
+[data-theme='dark'] .button--secondary {
+  border: 2px solid #f8bbd0 !important;
+  color: #f8bbd0 !important;
+}
+
+/* Pink-themed code blocks */
+.code-block {
+  border: 1px solid #f8bbd0 !important;
+  background: rgba(244, 143, 177, 0.03) !important;
+}
+
+[data-theme='dark'] .code-block {
+  border: 1px solid #880e4f !important;
+  background: rgba(136, 14, 79, 0.1) !important;
+}
+
+/* Pink-themed blockquotes */
+.markdown blockquote {
+  border-left: 4px solid #f48fb1 !important;
+  background: rgba(244, 143, 177, 0.05) !important;
+}
+
+[data-theme='dark'] .markdown blockquote {
+  border-left: 4px solid #f8bbd0 !important;
+  background: rgba(248, 187, 208, 0.1) !important;
+}
+
+/* Pink-themed tables */
+.markdown table th {
+  background: linear-gradient(90deg, #f48fb1 0%, #f06292 100%) !important;
+  color: white !important;
+}
+
+.markdown table tr:nth-child(even) {
+  background-color: rgba(244, 143, 177, 0.05) !important;
+}
+
+[data-theme='dark'] .markdown table tr:nth-child(even) {
+  background-color: rgba(248, 187, 208, 0.1) !important;
+}
+
+/* Pink-themed callouts */
+.callout {
+  border-left: 4px solid #f48fb1 !important;
+}
+
+.callout-info {
+  background: rgba(244, 143, 177, 0.1) !important;
+}
+
+.callout-success {
+  background: rgba(129, 199, 132, 0.1) !important;
+}
+
+.callout-warning {
+  background: rgba(255, 183, 77, 0.1) !important;
+}
+
+.callout-danger {
+  background: rgba(229, 115, 115, 0.1) !important;
+}
+
+[data-theme='dark'] .callout {
+  border-left: 4px solid #f8bbd0 !important;
+}
+
+/* Pink-themed search */
+.navbar__search-input {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  color: white !important;
+}
+
+.navbar__search-input::placeholder {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Pink-themed pagination */
+.pagination-nav__link {
+  border: 1px solid #f8bbd0 !important;
+  background: rgba(244, 143, 177, 0.05) !important;
+}
+
+[data-theme='dark'] .pagination-nav__link {
+  border: 1px solid #880e4f !important;
+  background: rgba(136, 14, 79, 0.1) !important;
+}
+
+/* Enhanced sidebar styling */
+.menu {
+  font-size: 0.95rem;
+}
+
+.menu__list-item-collapsible .menu__link--sublist {
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+}
+
+.menu__link--active {
+  background: var(--ifm-gradient-primary);
+  color: white !important;
+  border-radius: 8px;
+  margin-right: 0.5rem;
+}
+
+/* Enhanced footer styling with pink theme */
+.footer {
+  background: linear-gradient(90deg, #f48fb1 0%, #f06292 100%); /* Pink gradient */
+  color: white;
+  padding: 3rem 0;
+}
+
+[data-theme='dark'] .footer {
+  background: linear-gradient(90deg, #880e4f 0%, #ad1457 100%); /* Dark pink gradient */
+}
+
+.footer__title {
+  color: white;
+  margin-bottom: 1.5rem;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif !important;
+}
+
+.footer__link-item {
+  color: rgba(255, 255, 255, 0.9);
+  transition: color 0.3s ease;
+}
+
+.footer__link-item:hover {
+  color: #fff5f7; /* Light pink on hover */
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+/* Footer links */
+.footer a {
+  color: rgba(255, 255, 255, 0.9) !important;
+  transition: all 0.3s ease;
+}
+
+.footer a:hover {
+  color: white !important;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+/* Footer copyright */
+.footer__copyright {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  margin-top: 2rem;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 1.5rem;
+}
+
+/* Enhanced callout styling */
+.callout {
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+  border-left: 4px solid;
+  background: var(--ifm-color-secondary);
+  box-shadow: var(--ifm-card-shadow);
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.callout::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+}
+
+.callout-info {
+  background: linear-gradient(90deg, rgba(37, 99, 235, 0.05) 0%, rgba(37, 99, 235, 0.1) 100%);
+}
+
+.callout-info::before {
+  background: var(--ifm-color-primary);
+}
+
+.callout-success {
+  background: linear-gradient(90deg, rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0.1) 100%);
+}
+
+.callout-success::before {
+  background: var(--ifm-color-success);
+}
+
+.callout-warning {
+  background: linear-gradient(90deg, rgba(245, 158, 11, 0.05) 0%, rgba(245, 158, 11, 0.1) 100%);
+}
+
+.callout-warning::before {
+  background: var(--ifm-color-warning);
+}
+
+.callout-danger {
+  background: linear-gradient(90deg, rgba(239, 68, 68, 0.05) 0%, rgba(239, 68, 68, 0.1) 100%);
+}
+
+.callout-danger::before {
+  background: var(--ifm-color-danger);
+}
+
+/* Enhanced code block styling */
+.code-block {
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 1.5rem 0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+/* Enhanced hero section */
+.hero {
+  background: var(--ifm-gradient-primary);
+  color: white;
+  padding: 6rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at top right, rgba(255,255,255,0.1) 0%, transparent 50%),
+              radial-gradient(circle at bottom left, rgba(255,255,255,0.1) 0%, transparent 50%);
+}
+
+.hero__title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hero__subtitle {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+/* Enhanced hero section with pink theme */
+.hero {
+  background: linear-gradient(135deg, #fff5f7 0%, #fde0e6 100%); /* Light pink gradient */
+  color: #880e4f; /* Dark pink text */
+  padding: 6rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme='dark'] .hero {
+  background: linear-gradient(135deg, #4a0025 0%, #2a0016 100%); /* Dark pink gradient */
+  color: #f8bbd0; /* Light pink text */
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at top right, rgba(244, 143, 177, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at bottom left, rgba(244, 143, 177, 0.1) 0%, transparent 50%);
+}
+
+[data-theme='dark'] .hero::before {
+  background: radial-gradient(circle at top right, rgba(248, 187, 208, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at bottom left, rgba(248, 187, 208, 0.1) 0%, transparent 50%);
+}
+
+.hero__title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  text-shadow: 0 2px 4px rgba(244, 143, 177, 0.1);
+  color: #c2185b !important; /* Dark pink */
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif !important;
+}
+
+[data-theme='dark'] .hero__title {
+  color: #f8bbd0 !important; /* Light pink */
+  text-shadow: 0 2px 4px rgba(248, 187, 208, 0.2);
+}
+
+.hero__subtitle {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+  color: #d81b60 !important; /* Pink */
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif !important;
+}
+
+[data-theme='dark'] .hero__subtitle {
+  color: #f48fb1 !important; /* Light pink */
+}
+
+/* Enhanced features section with pink theme */
+.features {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, #fdf0f6 0%, #fae6ee 100%); /* Light pink gradient */
+}
+
+[data-theme='dark'] .features {
+  background: linear-gradient(135deg, #2a0016 0%, #4a0025 100%); /* Dark pink gradient */
+}
+
+.features__title {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.features__title h2 {
+  font-size: 2.5rem;
+  color: var(--ifm-color-primary);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.features__title p {
+  font-size: 1.25rem;
+  color: var(--ifm-color-gray);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Enhanced table styling */
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: 12px;
+  box-shadow: var(--ifm-card-shadow);
+  margin: 1.5rem 0;
+}
+
+.markdown table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+}
+
+.markdown table th,
+.markdown table td {
+  padding: 1rem;
+  border: 1px solid var(--ifm-color-secondary);
+  text-align: left;
+}
+
+.markdown table th {
+  background: var(--ifm-gradient-primary);
+  color: white;
+  font-weight: 600;
+  border: none;
+}
+
+.markdown table tr:nth-child(even) {
+  background-color: var(--ifm-color-secondary);
+}
+
+[data-theme='dark'] .markdown table tr:nth-child(even) {
+  background-color: rgba(30, 41, 59, 0.5);
+}
+
+/* Enhanced blockquote styling */
+.markdown blockquote {
+  border-left: 4px solid var(--ifm-color-primary);
+  background: linear-gradient(90deg, rgba(37, 99, 235, 0.05) 0%, rgba(37, 99, 235, 0.1) 100%);
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border-radius: 0 12px 12px 0;
+  font-style: italic;
+  position: relative;
+}
+
+.markdown blockquote::before {
+  content: '"';
+  font-size: 4rem;
+  position: absolute;
+  top: -1rem;
+  left: 1rem;
+  color: var(--ifm-color-primary);
+  opacity: 0.2;
+  font-family: serif;
+}
+
+/* Enhanced list styling */
+.markdown ul,
+.markdown ol {
+  margin: 1.5rem 0;
+  padding-left: 2rem;
+}
+
+.markdown li {
+  margin-bottom: 0.75rem;
+  line-height: 1.7;
+}
+
+.markdown ul li {
+  position: relative;
+}
+
+.markdown ul li::marker {
+  color: var(--ifm-color-primary);
+}
+
+/* Enhanced heading styling */
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.markdown h1 {
+  font-size: 2.5rem;
+  border-bottom: 2px solid var(--ifm-color-secondary);
+  padding-bottom: 1rem;
+  color: var(--ifm-color-primary-darker);
+}
+
+.markdown h2 {
+  font-size: 2rem;
+  color: var(--ifm-color-primary);
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.markdown h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--ifm-gradient-primary);
+  border-radius: 2px;
+}
+
+.markdown h3 {
+  font-size: 1.5rem;
+  color: var(--ifm-color-primary-darker);
+}
+
+.markdown h4 {
+  font-size: 1.25rem;
+  color: var(--ifm-color-gray);
+}
+
+/* Enhanced image styling */
+.markdown img {
+  border-radius: 12px;
+  box-shadow: var(--ifm-card-shadow);
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem 0;
+}
+
+/* Enhanced tabs styling */
+.tabs-container {
+  margin: 2rem 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--ifm-card-shadow);
+}
+
+.tabs {
+  border-bottom: 1px solid var(--ifm-color-secondary);
+  background: var(--ifm-card-background-color);
+}
+
+.tab-item {
+  padding: 1rem 1.5rem;
+  margin-bottom: -1px;
+  border-bottom: 3px solid transparent;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.tab-item--active {
+  border-bottom-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+  background: rgba(37, 99, 235, 0.05);
+}
+
+/* Enhanced homepage chapter cards */
+.homepage-chapters {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #fff5f7 0%, #fde0e6 100%);
+}
+
+[data-theme='dark'] .homepage-chapters {
+  background: linear-gradient(135deg, #4a0025 0%, #2a0016 100%);
+}
+
+/* Modern animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ifm-color-secondary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ifm-color-primary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ifm-color-primary-dark);
+}
+
+/* Print styles */
+@media print {
+  .navbar,
+  .footer,
+  .pagination-nav,
+  .theme-edit-this-page {
+    display: none !important;
+  }
+
+  .main-wrapper {
+    padding: 0;
+  }
+}
+
+/* Responsive design improvements */
+@media (max-width: 768px) {
+  .hero__title {
+    font-size: 2.5rem;
+  }
+
+  .hero__subtitle {
+    font-size: 1.1rem;
+  }
+
+  .features__title h2 {
+    font-size: 2rem;
+  }
+
+  .markdown h1 {
+    font-size: 2rem;
+  }
+
+  .markdown h2 {
+    font-size: 1.75rem;
+  }
+
+  .markdown h3 {
+    font-size: 1.35rem;
+  }
+}
+
+/* Loading animation for interactive elements */
+.loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255,255,255,.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Modern link styling */
+.markdown a {
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.markdown a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--ifm-gradient-primary);
+  transition: width 0.3s ease;
+}
+
+.markdown a:hover::after {
+  width: 100%;
+}
+
+/* Enhanced code inline styling */
+.markdown code {
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--ifm-color-primary-darker);
+  padding: 0.2rem 0.4rem;
+  border-radius: 6px;
+  font-size: 0.9em;
+  border: 1px solid rgba(37, 99, 235, 0.2);
+}
+
+/* Modern pagination */
+.pagination-nav__link {
+  border-radius: 12px;
+  border: 1px solid var(--ifm-color-secondary);
+  transition: all 0.2s ease;
+}
+
+.pagination-nav__link:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+/* Modern search styling */
+.navbar__search-input {
+  border-radius: 8px;
+  border: 1px solid var(--ifm-color-secondary);
+  padding: 0.5rem 1rem;
+  transition: all 0.2s ease;
+}
+
+.navbar__search-input:focus {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
