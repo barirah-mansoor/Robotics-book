@@ -2,7 +2,7 @@ import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
-// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
+// This file runs in Node.js — do NOT use browser APIs here
 
 const config: Config = {
   title: 'Physical AI & Humanoid Robotics — Essentials',
@@ -27,7 +27,7 @@ const config: Config = {
   },
 
   /* ================================
-     ✅ Google Analytics (gtag)
+     Google Analytics 4 (GA4)
      ================================ */
   plugins: [
     [
