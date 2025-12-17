@@ -28,12 +28,13 @@ const config: Config = {
 
   /* ================================
      Google Analytics 4 (GA4)
+     ID: G-5BRG981NCC
      ================================ */
   plugins: [
     [
       '@docusaurus/plugin-google-gtag',
       {
-        trackingID: 'G-JJWR7MRGE5',
+        trackingID: 'G-5BRG981NCC',
         anonymizeIP: true,
       },
     ],
