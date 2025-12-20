@@ -14,10 +14,11 @@ const FloatingChatbot: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      content: 'Hello! I\'m your AI assistant for Physical AI & Humanoid Robotics. Ask me anything about robotics, AI, or the book content!',
+      content:
+        "Hello! I'm your AI assistant for Physical AI & Humanoid Robotics. Ask me anything about robotics, AI, or the book content!",
       role: 'assistant',
       timestamp: new Date(),
-    }
+    },
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -31,18 +32,16 @@ const FloatingChatbot: React.FC = () => {
     scrollToBottom();
   }, [messages]);
 
-  const toggleChatbot = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleChatbot = () => setIsOpen(!isOpen);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!inputValue.trim() || isLoading) return;
 
-    // Add user message
+    const userInput = inputValue; // Capture input before clearing
     const userMessage: Message = {
       id: Date.now().toString(),
-      content: inputValue,
+      content: userInput,
       role: 'user',
       timestamp: new Date(),
     };
@@ -52,14 +51,11 @@ const FloatingChatbot: React.FC = () => {
     setIsLoading(true);
 
     try {
-      // Call our local RAG API backend
-      const response = await fetch('http://localhost:8000/chat', {
+      const response = await fetch('https://humbal-backend.hf.space/ask', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          message: inputValue,
+          message: userInput, // Use captured value
           user_id: 'website-user',
         }),
       });
@@ -74,24 +70,28 @@ const FloatingChatbot: React.FC = () => {
         };
         setMessages(prev => [...prev, botMessage]);
       } else {
-        // Fallback response if backend is not available
-        const fallbackMessage: Message = {
-          id: Date.now().toString(),
-          content: `I'm sorry, I couldn't process your question right now. The RAG backend might not be running. You can ask me anything about Physical AI & Humanoid Robotics!`,
-          role: 'assistant',
-          timestamp: new Date(),
-        };
-        setMessages(prev => [...prev, fallbackMessage]);
+        setMessages(prev => [
+          ...prev,
+          {
+            id: Date.now().toString(),
+            content:
+              "I'm sorry, I couldn't process your question right now. The RAG backend might not be running. You can ask me anything about Physical AI & Humanoid Robotics!",
+            role: 'assistant',
+            timestamp: new Date(),
+          },
+        ]);
       }
     } catch (error) {
-      // Fallback response if there's an error
-      const errorMessage: Message = {
-        id: Date.now().toString(),
-        content: `I'm sorry, I encountered an error. The RAG backend might not be running. You can ask me anything about Physical AI & Humanoid Robotics!`,
-        role: 'assistant',
-        timestamp: new Date(),
-      };
-      setMessages(prev => [...prev, errorMessage]);
+      setMessages(prev => [
+        ...prev,
+        {
+          id: Date.now().toString(),
+          content:
+            "I'm sorry, I encountered an error. The RAG backend might not be running. You can ask me anything about Physical AI & Humanoid Robotics!",
+          role: 'assistant',
+          timestamp: new Date(),
+        },
+      ]);
     } finally {
       setIsLoading(false);
     }
@@ -99,7 +99,7 @@ const FloatingChatbot: React.FC = () => {
 
   return (
     <>
-      {/* Floating Chatbot Button */}
+      {/* Floating Button */}
       <button
         className={clsx(styles.chatbotButton, isOpen && styles.hidden)}
         onClick={toggleChatbot}
@@ -108,10 +108,9 @@ const FloatingChatbot: React.FC = () => {
         <div className={styles.chatbotIcon}>🤖</div>
       </button>
 
-      {/* Chatbot Overlay/Sidebar */}
+      {/* Sidebar */}
       <div className={clsx(styles.chatbotOverlay, isOpen && styles.open)}>
         <div className={styles.chatbotSidebar}>
-          {/* Header */}
           <div className={styles.chatbotHeader}>
             <h3>🤖 Robotics AI Assistant</h3>
             <button
@@ -123,21 +122,33 @@ const FloatingChatbot: React.FC = () => {
             </button>
           </div>
 
-          {/* Chat Messages */}
+          {/* Messages */}
           <div className={styles.chatMessages}>
-            {messages.map((message) => (
+            {messages.map(message => (
               <div key={message.id} className={styles.message}>
-                <div className={clsx(
-                  styles.messageContent,
-                  message.role === 'user' ? styles.userMessage : styles.assistantMessage
-                )}>
+                <div
+                  className={clsx(
+                    styles.messageContent,
+                    message.role === 'user'
+                      ? styles.userMessage
+                      : styles.assistantMessage
+                  )}
+                >
                   {message.content}
+                </div>
+                <div className={styles.messageTimestamp}>
+                  {message.timestamp.toLocaleTimeString([], {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                  })}
                 </div>
               </div>
             ))}
             {isLoading && (
               <div className={styles.message}>
-                <div className={clsx(styles.messageContent, styles.assistantMessage)}>
+                <div
+                  className={clsx(styles.messageContent, styles.assistantMessage)}
+                >
                   <div className={styles.typingIndicator}>
                     <span></span>
                     <span></span>
@@ -149,12 +160,12 @@ const FloatingChatbot: React.FC = () => {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Input Area */}
+          {/* Input */}
           <form onSubmit={handleSubmit} className={styles.chatInputArea}>
             <input
               type="text"
               value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
+              onChange={e => setInputValue(e.target.value)}
               placeholder="Ask about robotics, AI, or book content..."
               className={styles.chatInput}
               disabled={isLoading}
@@ -171,12 +182,7 @@ const FloatingChatbot: React.FC = () => {
       </div>
 
       {/* Background overlay */}
-      {isOpen && (
-        <div
-          className={styles.overlayBackground}
-          onClick={toggleChatbot}
-        />
-      )}
+      {isOpen && <div className={styles.overlayBackground} onClick={toggleChatbot} />}
     </>
   );
 };
